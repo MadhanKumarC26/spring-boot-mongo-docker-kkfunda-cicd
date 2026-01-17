@@ -1,14 +1,21 @@
+
+
 FROM eclipse-temurin:8-jdk
 
+# Install packages using apt
+RUN apt-get update && apt-get install -y curl unzip
 
-# Required for starting application up.
-RUN apk update && apk add /bin/sh
-
-RUN mkdir -p /opt/app
-ENV PROJECT_HOME /opt/app
-
-COPY target/spring-boot-mongo-1.0.jar $PROJECT_HOME/spring-boot-mongo.jar
-
-WORKDIR $PROJECT_HOME
+WORKDIR /app
+COPY target/spring-boot-mongo-1.0.jar app.jar
 EXPOSE 8080
-CMD ["java" ,"-jar","./spring-boot-mongo.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
+
+
+
+
+
+
+
+
+
+

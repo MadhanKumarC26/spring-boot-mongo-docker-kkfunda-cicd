@@ -1,4 +1,5 @@
-FROM openjdk:8-jdk-slim
+FROM eclipse-temurin:8-jdk
+
 
 # Required for starting application up.
 RUN apk update && apk add /bin/sh
